@@ -1,42 +1,42 @@
-/* Estilos para el cuerpo de la página */
+
 body {
     background-color: #f0f8ff; 
 }
-/* Estilos para el encabezado de la página */
+
 header {
     background-color: #004d40; 
     color: white;              
 }
 
-/* Estilos para los títulos de las secciones (h2) */
+
 h2 {
     background-color: #e0f2f1; 
     color: #00332e;            
 }
 
-/* Estilos para las secciones principales (Biografía, Espiritualidad, etc.) */
+
 section {
     background-color: white;   
 }
 
-/* Estilos para el pie de página */
+
 footer {
     background-color: #333; 
     color: white;           
 }
 
-/* Estilos para los enlaces dentro del menú de navegación */
+
 nav a {
     background-color: transparent; 
     color: white;                  
 }
 
-/* Estilos para la tabla */
+
 table {
     background-color: #f5f5dc; 
 }
 
-/* Estilos para las celdas de encabezado de la tabla */
+
 th {
     background-color: #00695c; 
     color: white;              
