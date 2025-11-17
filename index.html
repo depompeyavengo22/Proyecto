@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Pompilio María de la Santísima Trinidad</title>
     <link rel="stylesheet" href="estilos_pompilio.css">
-    <link rel="stylesheet" href="pompilio.css"> 
+    <link rel="stylesheet" href="pompilio.css">
 </head>
 <body>
 
@@ -81,7 +81,7 @@
                 <li><strong>Piedad:</strong> Pasaba mucho tiempo en oración, buscando siempre la voluntad de Dios.</li>
             </ul>
         </section>
-        
+       
         <section id="galeria">
             <h2>Imágenes</h2>
             <img src="Pompilio María Pirrotti.jpg">
@@ -97,14 +97,138 @@
             </ul>
         </section>
 
-        <section id="trivia">
-            <h2>Trivia: Ponte a Prueba</h2>
-            <p>¡Responde tres preguntas sencillas sobre la vida de San Pompilio!</p>
-            <button onclick="iniciarTrivia()">¡Jugar Trivia!</button>
-        </section>
+       
 
     </main>
     <script src="trivia.js"></script>
+    <!-- SECCIÓN PARA JUGAR TRIVIA -->
+<section id="jugar-trivia">
+    <h2>¿Te animas a poner a prueba tus conocimientos?</h2>
+    <button id="abrirTrivia">Comenzar Trivia</button>
+    </section>
+    <!-- MODAL -->
+    <div id="modalTrivia" class="modal">
+     <div class="modal-contenido">
+     <span class="cerrar">&times;</span>
+     <!-- Aquí irá el formulario y resultados -->
+     <h2>Trivia sobre San Pompilio María Pirrotti</h2>
+    <form id="formTrivia">
+     <p><strong>1.</strong> ¿En qué país nació San Pompilio María Pirrotti?</p>
+     <label><input type="radio" name="p1" value="España"> España</label><br>
+     <label><input type="radio" name="p1" value="Italia"> Italia</label><br>
+     <label><input type="radio" name="p1" value="Francia"> Francia</label><br><br>
+   
+     <p><strong>2.</strong> ¿A qué orden religiosa pertenecía San Pompilio? </p>
+     <label><input type="radio" name="p2" value="Franciscanos"> Franciscanos</label><br>
+     <label><input type="radio" name="p2" value="Jesuitas"> Jesuitas</label><br>
+     <label><input type="radio" name="p2" value="Escolapios"> Escolapios</label><br><br>
+   
+     <p><strong>3.</strong> .  ¿Cuál era el nombre de nacimiento de San Pompilio? </p>
+     <label><input type="radio" name="p3" value="Domenico Pirrotti">Domenico Pirrotti</label><br>
+     <label><input type="radio" name="p3" value="Giovanni Battista Pirrotti">Giovanni Battista Pirrotti</label><br>
+     <label><input type="radio" name="p3" value="Francesco Pirrotti"> Francesco Pirrotti</label><br><br>
+   
+     <p><strong>4.</strong> .San Pompilio fue conocido especialmente por su amor a:  </p>
+     <label><input type="radio" name="p4" value="La educación y la Eucaristía">La educación y la Eucaristía</label><br>
+     <label><input type="radio" name="p4" value="Los enfermos y pobres"> Los enfermos y pobres</label><br>
+     <label><input type="radio" name="p4" value="El estudio de la filosofía"> El estudio de la filosofía</label><br><br>
+     
+     <p><strong>5.</strong> . ¿En qué año fue canonizado San Pompilio María Pirrotti por la Iglesia Católica? </p>
+     <label><input type="radio" name="p5" value="1890"> 1890</label><br>
+     <label><input type="radio" name="p5" value="1804"> 1804</label><br>
+     <label><input type="radio" name="p5" value="1934"> 1934</label><br><br>
+     <button type="submit">Enviar respuestas</button>
+    </form>
+    <div id="resultado"></div>
+     </div>
+    </div>
+    <!-- SCRIPT básico para abrir/cerrar el MODAL-->
+    <script>
+    const modal = document.getElementById("modalTrivia");
+    const btnAbrir = document.getElementById("abrirTrivia");
+    const btnCerrar = document.querySelector(".cerrar");
+    btnAbrir.onclick = () => { modal.style.display = "block"; };
+    btnCerrar.onclick = () => { modal.style.display = "none"; };
+    window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+    document.getElementById("formTrivia").addEventListener("submit", function(e) {
+     e.preventDefault();
+     // Variable para puntaje
+     let puntaje = 0;
+     let salida = "";
+     // Capturamos la respuesta de la PREGUNTA 1
+     let r1 = document.querySelector('input[name="p1"]:checked');
+     // Validamos
+     if (r1) {
+     if (r1.value === "Italia") {
+     puntaje++;
+     salida += "<p class='correcta'>1. Correcta</p>";
+     } else {
+     salida += "<p class='incorrecta'>1. Incorrecta. Correcta: Italia</p>";
+     }
+     } else {
+     salida += "<p class='incorrecta'>1. No respondida. Correcta: Italia</p>";
+     }
+    // Capturamos la respuesta de la PREGUNTA 2
+    let r2 = document.querySelector('input[name="p2"]:checked');
+     // Validamos
+     if (r2) {
+     if (r2.value === "Escolapios") {
+     puntaje++;
+     salida += "<p class='correcta'>2. Correcta</p>";
+     } else {
+     salida += "<p class='incorrecta'>2. Incorrecta. Correcta: Escolapios</p>";
+     }
+     } else {
+     salida += "<p class='incorrecta'>2. No respondida. Correcta: Escolapios</p>";
+     }
+    // Capturamos la respuesta de la PREGUNTA 3
+    let r3 = document.querySelector('input[name="p3"]:checked');
+     // Validamos
+     if (r3) {
+     if (r3.value === "Domenico Pirrotti") {
+     puntaje++;
+     salida += "<p class='correcta'>3. Correcta</p>";
+     } else {
+     salida += "<p class='incorrecta'>3. Incorrecta. Correcta: Domenico Pirrotti</p>";
+     }
+     } else {
+     salida += "<p class='incorrecta'>3. No respondida. Correcta: Domenico Pirrotti</p>";
+     }
+    // Capturamos la respuesta de la PREGUNTA 4
+    let r4 = document.querySelector('input[name="p4"]:checked');
+     // Validamos
+     if (r4) {
+     if (r4.value === "La educación y la Eucaristía") {
+     puntaje++;
+     salida += "<p class='correcta'>4. Correcta</p>";
+     } else {
+     salida += "<p class='incorrecta'>4. Incorrecta. Correcta: La educación y la Eucaristía</p>";
+     }
+     } else {
+     salida += "<p class='incorrecta'>4. No respondida. Correcta: La educación y la Eucaristía</p>";
+     }
+    // Capturamos la respuesta de la PREGUNTA 5
+    let r5 = document.querySelector('input[name="p5"]:checked');
+     // Validamos
+     if (r5) {
+     if (r5.value === "1934"){
+     puntaje++;
+     salida += "<p class='correcta'>5. Correcta</p>";
+     } else {
+     salida += "<p class='incorrecta'>5. Incorrecta. Correcta: 1934</p>";
+     }
+     } else {
+     salida += "<p class='incorrecta'>5. No respondida. Correcta: 1934</p>";
+     }
+     salida += `<h4>Puntaje final: ${puntaje} de 5</h4>`;
+     if (puntaje === 5) salida += "¡Excelente trabajo!";
+     else if (puntaje >= 3) salida += "Muy bien, conoces bastante sobre Calasanz.";
+     else salida += " Puedes repasar la página para aprender más.";
+     document.getElementById("resultado").innerHTML = salida;
+    });
+    </script>
+    </body>
+    </html>
 
     <footer>
         <p>&copy; 2025 Proyecto: San Pompilio María de la Santísima Trinidad</p>
